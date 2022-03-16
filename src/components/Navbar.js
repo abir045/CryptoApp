@@ -46,8 +46,7 @@ const Navbar = () => {
           {!activeMenu ? <MenuOutlined /> : <CloseOutlined />}
         </Button>
       </div>
-      {/* {activeMenu && ( */}
-      {/* <div className="links"> */}
+
       <Menu theme="dark" className="links" id={activeMenu ? "hidden" : ""}>
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
