@@ -7,29 +7,30 @@ import {
   BulbOutlined,
   FundOutlined,
   MenuOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import icon from "../images/goldenBitcoin.svg";
 
 const Navbar = () => {
-  const [activeMenu, setActiveMenu] = useState(true);
-  const [screenSize, setScreenSize] = useState(null);
+  const [activeMenu, setActiveMenu] = useState(false);
+  // const [screenSize, setScreenSize] = useState(null);
 
-  useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
+  // useEffect(() => {
+  //   const handleResize = () => setScreenSize(window.innerWidth);
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   handleResize();
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
-  useEffect(() => {
-    if (screenSize < 768) {
-      setActiveMenu(false);
-    } else {
-      setActiveMenu(true);
-    }
-  }, [screenSize]);
+  // useEffect(() => {
+  //   if (screenSize < 768) {
+  //     setActiveMenu(false);
+  //   } else {
+  //     setActiveMenu(true);
+  //   }
+  // }, [screenSize]);
 
   return (
     <div className="nav-container">
@@ -42,26 +43,31 @@ const Navbar = () => {
           className="menu-control-container"
           onClick={() => setActiveMenu(!activeMenu)}
         >
-          <MenuOutlined />
+          {!activeMenu ? <MenuOutlined /> : <CloseOutlined />}
         </Button>
       </div>
-      {activeMenu && (
-        <Menu theme="dark">
-          <Menu.Item icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
+      {/* {activeMenu && ( */}
+      {/* <div className="links"> */}
+      <Menu theme="dark" className="links" id={activeMenu ? "hidden" : ""}>
+        <Menu.Item icon={<HomeOutlined />}>
+          <Link to="/">Home</Link>
+        </Menu.Item>
 
-          <Menu.Item icon={<FundOutlined />}>
-            <Link to="/cryptocurrencies">cryptocurrencies</Link>
-          </Menu.Item>
-          {/* <Menu.Item icon={<MoneyCollectOutlined />}>
+        <Menu.Item icon={<FundOutlined />}>
+          <Link to="/cryptocurrencies">cryptocurrencies</Link>
+        </Menu.Item>
+
+        {/* <Menu.Item icon={<MoneyCollectOutlined />}>
             <Link to="/exchanges">Exchanges</Link>
           </Menu.Item> */}
-          <Menu.Item icon={<BulbOutlined />}>
-            <Link to="/news">news</Link>
-          </Menu.Item>
-        </Menu>
-      )}
+
+        <Menu.Item icon={<BulbOutlined />}>
+          <Link to="/news">news</Link>
+        </Menu.Item>
+      </Menu>
+      {/* </div> */}
+
+      {/* )} */}
     </div>
   );
 };

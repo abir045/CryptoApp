@@ -109,11 +109,31 @@ a:hover {
   }
 
   .nav-container {
-    height: 8vh;
+    height: 10vh;
     position: fixed;
     width: 100%;
     z-index: 100;
     background-color: var(--bgSecondary);
+  }
+
+  /* .logo-container {
+    display: none;
+  } */
+
+  .links {
+    display: none;
+  }
+
+  .nav-container #hidden {
+    position: absolute;
+    left: 0px;
+    top: 10vh;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
   }
 
   .menu-control-container {
